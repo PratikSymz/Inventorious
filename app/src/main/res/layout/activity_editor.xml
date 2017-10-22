@@ -1,0 +1,284 @@
+<!-- Layout for the editor -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".EditorActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Item Image View -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/catalog_activity_image_dimen">
+
+            <ImageView
+                android:id="@+id/image_view_item_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/add_image" />
+
+            <View
+                android:id="@+id/view_fade_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorBackgroundOverlay" />
+
+            <ImageButton
+                android:id="@+id/add_image_action_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:background="@android:color/transparent"
+                android:foreground="?selectableItemBackground" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:fontFamily="sans-serif"
+                android:gravity="center_horizontal"
+                android:padding="10dp"
+                android:text="@string/editor_click_to_add_image"
+                android:textAllCaps="true"
+                android:textColor="@color/colorAccent"
+                android:textSize="15sp"
+                android:textStyle="bold|italic" />
+
+        </RelativeLayout>
+
+        <!-- Item Details Fields -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/activity_margin">
+
+            <!-- Date Field -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/item_date"
+                    style="@style/CategoryStyle"
+                    android:text="@string/category_date" />
+
+                <TextView
+                    android:id="@+id/text_view_item_date"
+                    style="@style/EditorFieldStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:paddingLeft="6dp"
+                    android:textColor="@color/editorColorPrimary"
+                    tools:text="Date" />
+
+            </LinearLayout>
+
+            <!-- Overview category -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+                <!-- Label -->
+                <TextView
+                    style="@style/CategoryStyle"
+                    android:text="@string/category_overview" />
+
+                <!-- Input fields -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:orientation="vertical"
+                    android:paddingLeft="4dp">
+
+                    <!-- Name field -->
+                    <EditText
+                        android:id="@+id/edit_item_name"
+                        style="@style/EditorFieldStyle"
+                        android:hint="@string/hint_item_name"
+                        android:inputType="textCapWords" />
+
+                    <!-- Description field -->
+                    <EditText
+                        android:id="@+id/edit_item_description"
+                        style="@style/EditorFieldStyle"
+                        android:hint="@string/hint_item_description"
+                        android:inputType="textAutoComplete" />
+
+                    <!-- Quantity field -->
+                    <EditText
+                        android:id="@+id/edit_item_quantity"
+                        style="@style/EditorFieldStyle"
+                        android:hint="@string/hint_item_quantity"
+                        android:inputType="number" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp">
+
+                        <ImageButton
+                            android:id="@+id/item_add_quantity"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:background="@android:color/transparent"
+                            android:foreground="?selectableItemBackground"
+                            android:padding="2dp"
+                            android:src="@drawable/ic_add_black" />
+
+                        <ImageButton
+                            android:id="@+id/item_subtract_quantity"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:background="@android:color/transparent"
+                            android:foreground="?selectableItemBackground"
+                            android:padding="2dp"
+                            android:src="@drawable/ic_remove_black" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Price category -->
+            <LinearLayout
+                android:id="@+id/container_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+                <!-- Label -->
+                <TextView
+                    style="@style/CategoryStyle"
+                    android:text="@string/category_price" />
+
+                <!-- Input fields -->
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:paddingLeft="4dp">
+
+                    <!-- Price field -->
+                    <EditText
+                        android:id="@+id/edit_item_price"
+                        style="@style/EditorFieldStyle"
+                        android:inputType="number" />
+
+                    <!-- Units for Price (Rs.) -->
+                    <TextView
+                        android:id="@+id/label_price_units"
+                        style="@style/EditorUnitsStyle"
+                        android:text="@string/unit_item_price" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <!-- Supplier category -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+                <!-- Label -->
+                <TextView
+                    style="@style/CategoryStyle"
+                    android:text="@string/category_supplier" />
+
+                <!-- Input fields -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:orientation="vertical"
+                    android:paddingLeft="4dp">
+
+                    <!-- Name field -->
+                    <EditText
+                        android:id="@+id/edit_item_supplier_name"
+                        style="@style/EditorFieldStyle"
+                        android:hint="@string/hint_item_supplier_name"
+                        android:inputType="textCapWords" />
+
+                    <!-- Email field -->
+                    <EditText
+                        android:id="@+id/edit_item_supplier_email"
+                        style="@style/EditorFieldStyle"
+                        android:hint="@string/hint_item_supplier_email"
+                        android:inputType="textEmailAddress" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Location Category -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+                <!-- Label -->
+                <TextView
+                    style="@style/CategoryStyle"
+                    android:text="@string/category_location" />
+
+                <!-- Input fields -->
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:paddingLeft="4dp">
+
+                    <!-- Location field -->
+                    <EditText
+                        android:id="@+id/item_add_location_edit_text"
+                        style="@style/EditorFieldStyle"
+                        android:layout_marginRight="5dp"
+                        android:hint="@string/hint_item_location"
+                        android:inputType="textCapWords" />
+
+                    <!-- 'Add Location' Button -->
+                    <ImageButton
+                        android:id="@+id/item_add_location_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/ic_add_location_black_24dp"
+                        android:backgroundTint="@color/colorAccent" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <!-- Order Item Category -->
+            <Button
+                android:id="@+id/order_item_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@android:color/transparent"
+                android:foreground="?selectableItemBackground"
+                android:text="@string/editor_order_button" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

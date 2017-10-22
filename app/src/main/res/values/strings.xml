@@ -1,0 +1,134 @@
+<resources>
+
+    <!-- App name -->
+    <string name="app_name">Inventorious</string>
+
+    <!-- Title text for the quantity view, which describes the quantity in the catalog [CHAR LIMIT=50] -->
+    <string name="catalog_quantity">Quantity: </string>
+
+    <!-- Title text for the date view, which describes the date in the catalog [CHAR LIMIT=50] -->
+    <string name="catalog_date">Date: </string>
+
+    <!-- Title text for the supplier name view, which describes the supplier name in the catalog [CHAR LIMIT=50] -->
+    <string name="catalog_price">Price: </string>
+
+    <!-- Title text for the Sell Item view, which is used to sell the item [CHAR LIMIT=50] -->
+    <string name="catalog_sell_item_button">Sell</string>
+
+    <!-- Title text for the Buy Item view, which is used to buy the item [CHAR LIMIT=50] -->
+    <string name="catalog_buy_item_button">Buy</string>
+
+    <!-- Title text for the empty view, which describes the empty box image [CHAR LIMIT=50] -->
+    <string name="empty_view_title_text">It\'s a bit empty here…</string>
+
+    <!-- Subtitle text for the empty view that prompts the user to add an item [CHAR LIMIT=50] -->
+    <string name="empty_view_subtitle_text">Get started by adding an item</string>
+
+    <!-- Label for image attribute in the editor [CHAR LIMIT=30] -->
+    <string name="editor_click_to_add_image">Click here to add/edit image</string>
+
+    <!-- Label for date category of attributes in the editor [CHAR LIMIT=30] -->
+    <string name="category_date">Date Added</string>
+
+    <!-- Label for overview category of attributes in the editor [CHAR LIMIT=30] -->
+    <string name="category_overview">Overview</string>
+
+    <!-- Label for price category of attributes in the editor [CHAR LIMIT=30] -->
+    <string name="category_price">Price</string>
+
+    <!-- Label for supplier category of attributes in the editor [CHAR LIMIT=30] -->
+    <string name="category_supplier">Supplier</string>
+
+    <!-- Label for location category of attributes in the editor [CHAR LIMIT=30] -->
+    <string name="category_location">Location</string>
+
+    <!-- Text hint for name field in the editor [CHAR LIMIT=30] -->
+    <string name="hint_item_name">Name</string>
+
+    <!-- Text hint for description field in the editor [CHAR LIMIT=30] -->
+    <string name="hint_item_description">Description</string>
+
+    <!-- Text hint for quantity field in the editor [CHAR LIMIT=30] -->
+    <string name="hint_item_quantity">Quantity</string>
+
+    <!-- Units for price of the item (Dollars) [CHAR LIMIT=5] -->
+    <string name="unit_item_price">$</string>
+
+    <!-- Text hint for supplier name field in the editor [CHAR LIMIT=30] -->
+    <string name="hint_item_supplier_name">Name</string>
+
+    <!-- Text hint for supplier email field in the editor [CHAR LIMIT=30] -->
+    <string name="hint_item_supplier_email">Email</string>
+
+    <!-- Text hint for location field in the editor [CHAR LIMIT=30] -->
+    <string name="hint_item_location">Location Address</string>
+
+    <!-- Text hint for order button in the editor [CHAR LIMIT=30] -->
+    <string name="editor_order_button">Order</string>
+
+    <!-- Label for overflow menu option that deletes all item data in the app [CHAR LIMIT=20] -->
+    <string name="action_delete_all_entries">Delete All Items</string>
+
+    <!-- Label for editor menu option to save item and leave editor [CHAR LIMIT=20] -->
+    <string name="action_save">Save</string>
+
+    <!-- Label for editor overflow menu option that deletes the current item [CHAR LIMIT=20] -->
+    <string name="action_delete">Delete</string>
+
+    <!-- Title for the activity to add a new item [CHAR LIMIT=20] -->
+    <string name="editor_activity_title_new_item">Add an Item</string>
+
+    <!-- Title for the activity to edit the current item [CHAR LIMIT=20] -->
+    <string name="editor_activity_title_edit_item">Edit Item</string>
+
+    <!-- Toast message in editor when the location is not available [CHAR LIMIT=NONE] -->
+    <string name="editor_activity_location_not_available">Location not available! Please try again.</string>
+
+    <!-- Toast message in editor when all the ORDER ITEM information is not available [CHAR LIMIT=NONE] -->
+    <string name="editor_activity_give_order_information">Order name, quantity, and supplier email required!</string>
+
+    <!-- Toast message in editor when the item's information is incomplete [CHAR LIMIT=NONE] -->
+    <string name="editor_activity_give_all_the_information">Please fill all the details!</string>
+
+    <!-- Toast message in editor when the decoder is unable to open image [CHAR LIMIT=NONE] -->
+    <string name="editor_activity_unable_to_open_image">Unable to open image!</string>
+
+    <!-- Toast message in editor when new item has been successfully inserted [CHAR LIMIT=NONE] -->
+    <string name="editor_insert_item_successful">Item saved</string>
+
+    <!-- Toast message in editor when new item has failed to be inserted [CHAR LIMIT=NONE] -->
+    <string name="editor_insert_item_failed">Error with saving item</string>
+
+    <!-- Toast message in editor when current item has updated successfully [CHAR LIMIT=NONE] -->
+    <string name="editor_update_item_successful">Item Updated Successfully</string>
+
+    <!-- Toast message in editor when current item has failed to be updated [CHAR LIMIT=NONE] -->
+    <string name="editor_update_item_failed">Error with updating item</string>
+
+    <!-- Dialog message when user is leaving editor but hasn't saved changes [CHAR LIMIT=NONE] -->
+    <string name="unsaved_changes_dialog_msg">Discard your changes and quit editing?</string>
+
+    <!-- Dialog button text for the option to discard a user's changes [CHAR LIMIT=20] -->
+    <string name="discard">Discard</string>
+
+    <!-- Dialog button text for the option to keep editing the current item [CHAR LIMIT=20] -->
+    <string name="keep_editing">Keep Editing</string>
+
+    <!-- Dialog message to ask the user to confirm deleting the current item [CHAR LIMIT=NONE] -->
+    <string name="delete_dialog_msg">Delete this item?</string>
+
+    <!-- Dialog button text for the option to confirm deleting the current item [CHAR LIMIT=20] -->
+    <string name="delete">Delete</string>
+
+    <!-- Dialog button text for the option to cancel deletion of the current item [CHAR LIMIT=20] -->
+    <string name="cancel">Cancel</string>
+
+    <!-- Toast message in editor when current item was successfully deleted [CHAR LIMIT=NONE] -->
+    <string name="editor_delete_item_successful">Item deleted</string>
+
+    <!-- Toast message in editor when current item has failed to be deleted [CHAR LIMIT=NONE] -->
+    <string name="editor_delete_item_failed">Error with deleting item</string>
+
+    <string name="title_activity_maps_location">Map</string>
+
+</resources>
