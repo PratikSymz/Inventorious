@@ -279,7 +279,7 @@ public class EditorActivity extends AppCompatActivity implements
 
         /* Quantity Modification */
         // Set initial value of quantity
-        mQuantityEditText.setText("0");
+        mQuantityEditText.setText("1");
 
         // Add an OnClick listener on the ADD button to increase the value of quantity
         mAddQuantityButton.setOnClickListener(new View.OnClickListener()
@@ -303,7 +303,7 @@ public class EditorActivity extends AppCompatActivity implements
                 String currentProduct = mNameEditText.getText().toString();
                 String toastMessage;
                 int currentQuantity = parseInt(mQuantityEditText.getText().toString());
-                if (currentQuantity >= 1) {
+                if (currentQuantity > 1) {
                     currentQuantity--;
                     mQuantityEditText.setText(String.valueOf(currentQuantity));
                 } else {
@@ -380,7 +380,7 @@ public class EditorActivity extends AppCompatActivity implements
         String supplierNameString = mSupplierNameEditText.getText().toString().trim();
         String supplierEmailString = mSupplierEmailEditText.getText().toString().trim();
         String dateString = itemDateOfAddition;
-        String locationString = itemLocationAddress;
+        String locationString = mItemLocation.getText().toString().trim();
 
         // Check if this is supposed to be a new item
         // and check if all the fields in the editor are blank
@@ -396,8 +396,7 @@ public class EditorActivity extends AppCompatActivity implements
         }
 
         if (nameString.isEmpty() || descString.isEmpty() || quantityString.isEmpty() ||
-                priceString.isEmpty() || supplierNameString.isEmpty() || supplierEmailString.isEmpty()
-                || locationString.isEmpty()) {
+                priceString.isEmpty() || supplierNameString.isEmpty() || supplierEmailString.isEmpty()) {
             Toast.makeText(this, R.string.editor_activity_give_all_the_information, Toast.LENGTH_SHORT).show();
             return;
         }
@@ -407,7 +406,7 @@ public class EditorActivity extends AppCompatActivity implements
             picturePath = pictureUri.toString().trim();
         } else {
             picturePath = Uri.parse(
-                    "android.resource://com.pratiksymz.android.inventoryapp/drawable/gradient_drawable.xml"
+                    "android.resource://" + "com.pratiksymz.android.myinventory" + "/" + R.drawable.gradient_drawable
             ).toString().trim();
         }
 

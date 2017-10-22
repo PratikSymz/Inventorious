@@ -132,7 +132,7 @@
             android:focusable="false"
             android:fontFamily="sans-serif-medium"
             android:layout_below="@id/item_date_field"
-            android:foreground="?selectableItemBackground"
+            android:foreground="?selectableItemBackgroundBorderless"
             android:text="@string/catalog_sell_item_button"/>
 
     </RelativeLayout>

@@ -144,7 +144,7 @@ public class MapsLocationActivity extends FragmentActivity implements OnMapReady
                         .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
                 );
 
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mCurrentLocation, 16));
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(mCurrentLocation, 18));
 
                 // Use GeoCoder to extract the user's current location address
                 Geocoder geocoder = new Geocoder(getApplicationContext(), Locale.getDefault());

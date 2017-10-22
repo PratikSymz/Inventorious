@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.pratiksymz.android.myinventory.data.InventoryContract.ItemsEntry;
 
@@ -91,7 +92,7 @@ public class ItemCursorAdapter extends CursorAdapter {
         itemSellButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (itemQuantity > 0) {
+                if (itemQuantity > 1) {
                     int tempQuantity = itemQuantity;
                     tempQuantity--;
 
@@ -101,6 +102,9 @@ public class ItemCursorAdapter extends CursorAdapter {
 
                     // Create the new uri of the current product
                     context.getContentResolver().update(currentItemUri, values, null, null);
+                } else {
+                    String toastMessage = "You can't reduce the stock of the product to 0!";
+                    Toast.makeText(context, toastMessage, Toast.LENGTH_SHORT).show();
                 }
             }
         });
