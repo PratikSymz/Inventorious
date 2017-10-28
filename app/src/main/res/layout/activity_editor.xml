@@ -35,8 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"
-                android:background="@android:color/transparent"
-                android:foreground="?selectableItemBackgroundBorderless" />
+                android:background="?selectableItemBackground" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -262,7 +261,8 @@
                         android:layout_marginTop="5dp"
                         android:background="@drawable/ic_add_location_black_24dp"
                         android:backgroundTint="@color/colorAccent"
-                        android:foreground="?selectableItemBackgroundBorderless"/>
+                        android:foreground="?selectableItemBackgroundBorderless"
+                        android:layout_alignParentEnd="true" />
 
                 </RelativeLayout>
 
@@ -271,11 +271,11 @@
             <!-- Order Item Category -->
             <Button
                 android:id="@+id/order_item_button"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@android:color/transparent"
-                android:foreground="?selectableItemBackgroundBorderless"
+                android:layout_margin="20dp"
+                android:layout_gravity="center"
+                android:background="?selectableItemBackgroundBorderless"
                 android:text="@string/editor_order_button" />
 
         </LinearLayout>

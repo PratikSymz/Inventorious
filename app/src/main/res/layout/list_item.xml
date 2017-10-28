@@ -128,11 +128,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:background="@android:color/transparent"
             android:focusable="false"
             android:fontFamily="sans-serif-medium"
             android:layout_below="@id/item_date_field"
-            android:foreground="?selectableItemBackgroundBorderless"
+            android:background="?selectableItemBackgroundBorderless"
             android:text="@string/catalog_sell_item_button"/>
 
     </RelativeLayout>

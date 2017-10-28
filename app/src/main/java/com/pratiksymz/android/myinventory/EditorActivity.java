@@ -3,6 +3,7 @@ package com.pratiksymz.android.myinventory;
 import android.app.Activity;
 import android.app.LoaderManager;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.CursorLoader;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -10,10 +11,14 @@ import android.content.Loader;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.location.LocationManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -134,6 +139,17 @@ public class EditorActivity extends AppCompatActivity implements
      * Integer field to store the LOCATION_REQUEST constant
      */
     private static final int LOCATION_REQUEST = 1;
+
+    /**
+     * LocationManager instance to check for GPS availability
+     */
+    private LocationManager locationManager;
+
+    /**
+     * ConnectivityManager & NetworkInfo instances to check for Network availability
+     */
+    private ConnectivityManager connectivityManager;
+    private NetworkInfo networkInfo;
 
     /**
      * Button to order the item saved by sending an email to the supplier
@@ -331,9 +347,22 @@ public class EditorActivity extends AppCompatActivity implements
         /* LOCATION EXTRACTION */
         mAddItemLocationButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent mapIntent = new Intent(EditorActivity.this, MapsLocationActivity.class);
-                startActivityForResult(mapIntent, LOCATION_REQUEST);
+            public void onClick(View view) {
+                connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+                if (connectivityManager != null) {
+                    networkInfo = connectivityManager.getActiveNetworkInfo();
+                }
+
+                locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+                boolean gpsEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+
+                if (networkInfo != null && networkInfo.isConnected() && gpsEnabled) {
+                    Intent mapIntent = new Intent(EditorActivity.this, MapsLocationActivity.class);
+                    startActivityForResult(mapIntent, LOCATION_REQUEST);
+                } else {
+                    Snackbar.make(view, "Internet and Location Services should be on.", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                }
             }
         });
 
@@ -406,7 +435,7 @@ public class EditorActivity extends AppCompatActivity implements
             picturePath = pictureUri.toString().trim();
         } else {
             picturePath = Uri.parse(
-                    "android.resource://" + "com.pratiksymz.android.myinventory" + "/" + R.drawable.gradient_drawable
+                    "android.resource://" + getPackageName() + "/" + R.drawable.gradient_drawable
             ).toString().trim();
         }
 

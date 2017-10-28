@@ -34,12 +34,15 @@ import java.util.Locale;
 
 public class MapsLocationActivity extends FragmentActivity implements OnMapReadyCallback {
 
+    private final static String LOG_TAG = MapsLocationActivity.class.getName();
+
     private GoogleMap mMap;
 
     private LocationManager mLocationManager;
     private LocationListener mLocationListener;
 
     private Location mLastKnownLocation;
+    private LatLng mCurrentLocation;
 
     private FloatingActionButton mFloatingActionButton;
     private String mCurrentAddress = null;
@@ -78,11 +81,27 @@ public class MapsLocationActivity extends FragmentActivity implements OnMapReady
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
         mLocationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         mLocationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
+                // Delete existing markers
+                mMap.clear();
+
+                mCurrentLocation = new LatLng(
+                        location.getLatitude(),
+                        location.getLongitude()
+                );
+
+                mMap.addMarker(new MarkerOptions()
+                        .position(mCurrentLocation)
+                        .title("Current Location")
+                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
+                );
+
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(mCurrentLocation, 18));
             }
 
             @Override
@@ -95,6 +114,12 @@ public class MapsLocationActivity extends FragmentActivity implements OnMapReady
 
             @Override
             public void onProviderDisabled(String provider) {
+                mLocationManager.requestLocationUpdates(
+                        provider,
+                        0,
+                        0,
+                        mLocationListener
+                );
             }
 
         };
@@ -122,18 +147,17 @@ public class MapsLocationActivity extends FragmentActivity implements OnMapReady
                 mLocationManager.requestLocationUpdates(
                         LocationManager.GPS_PROVIDER,
                         0,                                  // Minimum Time
-                        0,                                  // Minimum Distance
+                        0,                               // Minimum Distance
                         mLocationListener
                 );
 
                 // Add the current location of the user on the map when it is prepared
-                mLastKnownLocation = mLocationManager
-                        .getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                mLastKnownLocation = getLastKnownLocation();
 
                 // Delete existing markers
                 mMap.clear();
 
-                LatLng mCurrentLocation = new LatLng(
+                mCurrentLocation = new LatLng(
                         mLastKnownLocation.getLatitude(),
                         mLastKnownLocation.getLongitude()
                 );
@@ -171,13 +195,31 @@ public class MapsLocationActivity extends FragmentActivity implements OnMapReady
                         }
 
                     }
-                    // Toast.makeText(MapsLocationActivity.this, mCurrentAddress, Toast.LENGTH_LONG).show();
 
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
         }
+    }
+
+    /*
+     * Helper method to retrieve the best last known location of the user
+     */
+    private Location getLastKnownLocation() {
+        List<String> providers = mLocationManager.getProviders(true);
+        Location bestLocation = null;
+        for (String provider : providers) {
+            Location location = mLocationManager.getLastKnownLocation(provider);
+            if (location == null) {
+                continue;
+            }
+            if (bestLocation == null || location.getAccuracy() < bestLocation.getAccuracy()) {
+                // Found best last known location: %s", l);
+                bestLocation = location;
+            }
+        }
+        return bestLocation;
     }
 
     @Override
